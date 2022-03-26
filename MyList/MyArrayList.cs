@@ -1,6 +1,12 @@
-﻿namespace MyList
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyArrayList
 {
-    public class MyListArray
+    public class MyArrayList
     {
         public int Length { get; private set; }
 
@@ -29,26 +35,31 @@
 
         private int[] _array;
 
-        public MyListArray()
+        public MyArrayList()
         {
             _array = new int[10];
             Length = 0;
         }
 
-        public MyListArray(int value)
+        public MyArrayList(int value)
         {
             _array = new int[10];
             _array[0] = value;
             Length = 1;
         }
 
-        public MyListArray(int[] values)
+        public MyArrayList(int[] array)
         {
-            _array = new int[(int) (values.Length * 1.5d + 1)];
-
-            for (int i = 0; i < values.Length; i++)
+            if (array == null || array.Length == 0)
             {
-                AddLast(values[i]);
+                _array = new int[10];
+                Length = 0;
+            }
+            else
+            {
+                _array = array;
+                UpSize();
+                Length = array.Length;
             }
         }
 
@@ -77,6 +88,11 @@
 
         public void AddByIndex(int index, int value)
         {
+            if (index < 0 || index >= Length)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             if (Length >= _array.Length)
             {
                 UpSize();
@@ -90,6 +106,11 @@
 
         public void DeleteLast()
         {
+            if (Length < 1)
+            {
+                throw new Exception("Empty list");
+            }
+
             if(Length <= _array.Length / 2)
             {
                 DownSize();
@@ -100,6 +121,11 @@
 
         public void DeleteFirst()
         {
+            if (Length < 1)
+            {
+                throw new Exception("Empty list");
+            }
+
             ShiftLeft();
 
             Length--;
@@ -107,6 +133,11 @@
 
         public void DeleteByIndex(int index)
         {
+            if (index<0 || index >= Length)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             ShiftLeft(index);
 
             Length--;
@@ -295,7 +326,7 @@
             return CountOfElements;
         }
 
-        public void AddListToEnd(MyListArray list)
+        public void AddListToEnd(MyArrayList list)
         {
             for (int i = 0; i < list.Length; i++)
             {
@@ -303,7 +334,7 @@
             }
         }
 
-        public void AddListToBegin(MyListArray list)
+        public void AddListToBegin(MyArrayList list)
         {
             for (int i = list.Length - 1; i >= 0; i--)
             {
@@ -311,13 +342,65 @@
             }
         }
 
-        public void AddListByIndex(MyListArray list, int index)
+        public void AddListByIndex(MyArrayList list, int index)
         {
             for (int i = 0; i < list.Length; i++)
             {
                 AddByIndex(index, list[i]);
                 index++;
             }
+        }
+
+        public void Write()
+        {
+            for (int i = 0; i < Length; i++)
+            {
+                Console.Write($"{_array[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        public override string ToString()
+        {
+            string strArray = "";
+
+            for (int i = 0; i < Length; i++)
+            {
+                strArray += $"{_array[i]} ";
+            }
+
+            return strArray;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            bool isEqual = true;
+
+            if (obj == null || !(obj is MyArrayList))
+            {
+                isEqual = false;
+            }
+            else
+            {
+                MyArrayList list = (MyArrayList)obj;
+
+                if (list.Length != this.Length)
+                {
+                    isEqual = false;
+                }
+                else
+                {
+                    for (int i = 0; i < this.Length; i++)
+                    {
+                        if (list[i] != this[i])
+                        {
+                            isEqual = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return isEqual;
         }
 
         private void ShiftRight(int index = 0)
@@ -339,15 +422,6 @@
             {
                 _array[i] = _array[i + 1];
             }
-        }
-
-        public void Write()
-        {
-            for (int i = 0; i < Length; i++)
-            {
-                Console.Write($"{_array[i]} ");
-            }
-            Console.WriteLine();
         }
 
         private void UpSize()
