@@ -133,7 +133,7 @@ namespace MyArrayList
 
         public void DeleteByIndex(int index)
         {
-            if (index<0 || index >= Length)
+            if (index < 0 || index >= Length)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -141,6 +141,87 @@ namespace MyArrayList
             ShiftLeft(index);
 
             Length--;
+        }
+
+        public void DeleteElementsFromEnd(int countElement)
+        {
+            if (countElement < 1)
+            {
+                throw new ArgumentException("Count shoule be positiv and greater than 0");
+            }
+
+            if (countElement >= Length)
+            {
+                Length = 0;
+            }
+            else
+            {
+                Length -= countElement;
+            }
+
+            if (Length <= _array.Length / 2)
+            {
+                DownSize();
+            }
+        }
+
+        public void DeleteElementsFromBegin(int countElement)
+        {
+            if (countElement < 1)
+            {
+                throw new ArgumentException("Count shoule be positiv and greater than 0");
+            }
+
+            if (countElement >= Length)
+            {
+                Length = 0;
+            }
+            else
+            {
+                for (int i = 0; i < Length - countElement; i++)
+                {
+                    _array[i] = _array[i + countElement];
+                }
+
+                Length -= countElement;
+            }
+
+            if (Length <= _array.Length / 2)
+            {
+                DownSize();
+            }
+        }
+
+        public void DeleteElementsByIndex(int index, int countElement)
+        {
+            if (countElement < 1)
+            {
+                throw new ArgumentException("Count shoule be positiv and greater than 0");
+            }
+
+            if (index < 0 || index >= Length)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            if (countElement > Length - index)
+            {
+                Length = index;
+            }
+            else
+            {
+                for (int i = index; i < Length - countElement; i++)
+                {
+                    _array[i] = _array[i + countElement];
+                }
+
+                Length -= countElement;
+            }
+
+            if (Length <= _array.Length / 2)
+            {
+                DownSize();
+            }
         }
 
         public int FindFirstElementByValue (int value)
@@ -169,7 +250,7 @@ namespace MyArrayList
             }
         }
 
-        public int FindMaxElement()
+        public int FindMax()
         {
             if (Length == 0)
             {
@@ -189,7 +270,7 @@ namespace MyArrayList
             return maxElement;
         }
 
-        public int FindMinElement()
+        public int FindMin()
         {
             if (Length == 0)
             {
@@ -309,25 +390,31 @@ namespace MyArrayList
 
         public int DeleteAllElementByValue(int value)
         {
-            int indexOfElement;
-            int CountOfElements = 0;
+            int countOfElements = 0;
+
             for (int i = 0; i < Length; i++)
             {
-                indexOfElement = FindFirstElementByValue(value);
-
-                if (indexOfElement != -1)
+                if (_array[i] == value)
                 {
-                    ShiftLeft(indexOfElement);
-                    Length--;
-                    CountOfElements++;
+                    countOfElements++;
+                }
+                else
+                {
+                    _array[i - countOfElements] = _array[i];
                 }
             }
 
-            return CountOfElements;
+            Length -= countOfElements;
+            return countOfElements;
         }
 
         public void AddListToEnd(MyArrayList list)
         {
+            if (list == null)
+            {
+                throw new ArgumentNullException();
+            }
+
             for (int i = 0; i < list.Length; i++)
             {
                 AddLast(list[i]);
@@ -336,19 +423,62 @@ namespace MyArrayList
 
         public void AddListToBegin(MyArrayList list)
         {
-            for (int i = list.Length - 1; i >= 0; i--)
+            if (list == null)
             {
-                AddFirst(list[i]);
+                throw new ArgumentNullException();
             }
+
+            int[] newArray = new int[this.Length + list.Length];
+
+            for (int i = 0; i < list.Length; i++)
+            {
+                newArray[i] = list[i];
+            }
+
+            for (int i = list.Length; i < newArray.Length; i++)
+            {
+                newArray[i] = _array[i - list.Length];
+            }
+
+            Length = newArray.Length;
+            _array = newArray;
+            UpSize();
         }
 
         public void AddListByIndex(MyArrayList list, int index)
         {
-            for (int i = 0; i < list.Length; i++)
+            if (list == null)
             {
-                AddByIndex(index, list[i]);
-                index++;
+                throw new ArgumentNullException();
             }
+
+            int newLegth = this.Length + list.Length;
+
+            if (index < 0 || index >= newLegth)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            int[] newArray = new int[newLegth];
+            
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = _array[i];
+            }
+
+            for (int i = index; i < index + list.Length; i++)
+            {
+                newArray[i] = list[i - index];
+            }
+
+            for (int i = index + list.Length; i < newArray.Length; i++)
+            {
+                newArray[i] = _array[i - list.Length];
+            }
+
+            Length = newArray.Length;
+            _array = newArray;
+            UpSize();
         }
 
         public void Write()
