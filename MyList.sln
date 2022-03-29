@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArrayList", "MyList\MyArrayList.csproj", "{747F407A-02DD-415F-BD73-DDFF241234A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyArrayList.Tests", "MyArrayList.Tests\MyArrayList.Tests.csproj", "{937DAF86-1B4D-4F14-954B-5E3A0807BB06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArrayList.Tests", "MyArrayList.Tests\MyArrayList.Tests.csproj", "{937DAF86-1B4D-4F14-954B-5E3A0807BB06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLinkedList.Tests", "LinkedList.Tests\MyLinkedList.Tests.csproj", "{9DF8A1F5-2325-46B1-BA9B-70E6BE26C489}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLinkedList", "MyLinkedList\MyLinkedList.csproj", "{2689F3C3-F654-4FB1-A8A7-ABE67446D249}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{937DAF86-1B4D-4F14-954B-5E3A0807BB06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{937DAF86-1B4D-4F14-954B-5E3A0807BB06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{937DAF86-1B4D-4F14-954B-5E3A0807BB06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF8A1F5-2325-46B1-BA9B-70E6BE26C489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF8A1F5-2325-46B1-BA9B-70E6BE26C489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF8A1F5-2325-46B1-BA9B-70E6BE26C489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF8A1F5-2325-46B1-BA9B-70E6BE26C489}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2689F3C3-F654-4FB1-A8A7-ABE67446D249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2689F3C3-F654-4FB1-A8A7-ABE67446D249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2689F3C3-F654-4FB1-A8A7-ABE67446D249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2689F3C3-F654-4FB1-A8A7-ABE67446D249}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

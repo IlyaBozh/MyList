@@ -9,7 +9,6 @@ namespace MyArrayList
     public class MyArrayList
     {
         public int Length { get; private set; }
-
         public int this[int index]
         {
             get
