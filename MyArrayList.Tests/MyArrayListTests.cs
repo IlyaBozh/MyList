@@ -129,7 +129,7 @@ namespace MyArrayList.Tests
         [TestCaseSource(typeof(FindFirstElementByValueTestSource))]
         public void FindFirstElementByValueTest(int value, MyArrayList list, int expectedIndex)
         {
-            int actualIndex = list.FindFirstElementByValue(value);
+            int actualIndex = list.FindIndexFirstElementByValue(value);
             Assert.AreEqual(expectedIndex, actualIndex);
         }
 

@@ -103,14 +103,15 @@ namespace MyLinkedList.Tests
             yield return new object[] { 0, 1, new MyLinkedList(1), new MyLinkedList() };
         }
     }
-    /*
-    public class FindFirstElementByValueTestSource : IEnumerable
+    
+    public class FindIndexFirstElementByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[] { 2, new MyLinkedList(new int[] { 1, 2, 3, 4, 5 }), 1 };
             yield return new object[] { 5, new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }), 4 };
             yield return new object[] { 12, new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }), -1 };
+            yield return new object[] { 1, new MyLinkedList(1), 0 };
             yield return new object[] { 12, new MyLinkedList(), -1 };
         }
     }
@@ -125,7 +126,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(), new MyLinkedList() };
         }
     }
-
+    
     public class FindMaxTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -147,7 +148,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(new int[] { 5, 5, 5, 2, 3, 6, 6, 2 }), 2 };
         }
     }
-
+    
     public class FindIndexOfMaxElementTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -158,7 +159,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(new int[] { 5, 5, 5, 3, 6, 6, 2 }), 4 };
         }
     }
-
+    
     public class FindIndexOfMinElementTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -169,7 +170,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(new int[] { 5, 5, 5, 2, 3, 6, 6, 2 }), 3 };
         }
     }
-
+    /*
     public class SortAscendingTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -191,7 +192,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(), new MyLinkedList() };
         }
     }
-
+    */
     public class DeleteFirstElementByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -203,19 +204,18 @@ namespace MyLinkedList.Tests
             yield return new object[] { 12, new MyLinkedList(12), 0, new MyLinkedList() };
         }
     }
-
+    
     public class DeleteAllElementByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
             yield return new object[] { 2, new MyLinkedList(new int[] { 1, 2, 3, 4, 5 }), 1, new MyLinkedList(new int[] { 1, 3, 4, 5 }) };
-            yield return new object[] { 5, new MyLinkedList(new int[] { -1, 5, -3, 4, 5, 6, 3 }), 2, new MyLinkedList(new int[] { -1, -3, 4, 6, 3 }) };
+            yield return new object[] { 5, new MyLinkedList(new int[] { -1, 5, -3, 4, 5, 6, 5 }), 3, new MyLinkedList(new int[] { -1, -3, 4, 6 }) };
             yield return new object[] { 12, new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }), 0, new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }) };
-            yield return new object[] { 12, new MyLinkedList(), 0, new MyLinkedList() };
             yield return new object[] { 12, new MyLinkedList(12), 1, new MyLinkedList() };
         }
     }
-
+    
     public class AddListToEndTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -227,7 +227,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(12), new MyLinkedList(), new MyLinkedList(12) };
         }
     }
-
+    
     public class AddListToBeginTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -248,6 +248,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(new int[] { -1, 5 }), 3, new MyLinkedList(new int[] { -1, -3, 4, 6, 3 }), new MyLinkedList(new int[] { -1, -3, 4, -1, 5, 6, 3 }) };
             yield return new object[] { new MyLinkedList(new int[] { }), 2, new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }), new MyLinkedList(new int[] { -1, -2, -3, 4, 5, 6, 3 }) };
             yield return new object[] { new MyLinkedList(12), 0, new MyLinkedList(), new MyLinkedList(12) };
+            yield return new object[] { new MyLinkedList(new int[] { -1, 5 }), 5, new MyLinkedList(new int[] { -1, -3, 4, 6, 3 }), new MyLinkedList(new int[] { -1, -3, 4, 6, 3, -1, 5 }) };
         }
-    }*/
+    }
 }

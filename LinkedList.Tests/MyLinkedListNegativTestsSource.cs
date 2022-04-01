@@ -81,7 +81,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { 5, 2, new MyLinkedList(new int[] { -1, -2, -3 }) };
         }
     }
-    /*
+    
     public class FindMaxTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -89,7 +89,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList() };
         }
     }
-
+    
     public class FindMinTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -97,7 +97,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList() };
         }
     }
-
+    
     public class FindIndexOfMaxElementTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -105,7 +105,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList() };
         }
     }
-
+    
     public class FindIndexOfMinElementTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -114,21 +114,11 @@ namespace MyLinkedList.Tests
         }
     }
 
-    public class AddListToEndTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource : IEnumerable
+    public class DeleteAllElementByValueTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
-            MyLinkedList list = null;
-            yield return new object[] { list, new MyLinkedList(12) };
-        }
-    }
-
-    public class AddListToBeginTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource : IEnumerable
-    {
-        public IEnumerator GetEnumerator()
-        {
-            MyLinkedList list = null;
-            yield return new object[] { list, new MyLinkedList(12) };
+            yield return new object[] { 2, new MyLinkedList() };
         }
     }
 
@@ -141,13 +131,4 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(12), 4, new MyLinkedList(12) };
         }
     }
-
-    public class AddListByIndexTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource : IEnumerable
-    {
-        public IEnumerator GetEnumerator()
-        {
-            MyLinkedList list = null;
-            yield return new object[] { list, -1, new MyLinkedList(12) };
-        }
-    }*/
 }

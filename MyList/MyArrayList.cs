@@ -223,18 +223,19 @@ namespace MyArrayList
             }
         }
 
-        public int FindFirstElementByValue (int value)
+        public int FindIndexFirstElementByValue (int value)
         {
-
+            int index = -1;
             for (int i = 0; i < Length; i++)
             {
                 if (value == _array[i])
                 {
-                    return i;
+                   index = i;
+                    break;
                 }
             }
 
-            return -1;
+            return index;
         }
 
         public void Reverse()
@@ -376,7 +377,7 @@ namespace MyArrayList
 
         public int DeleteFirstElementByValue(int value)
         {
-            int indexOfElement = FindFirstElementByValue(value);
+            int indexOfElement = FindIndexFirstElementByValue(value);
 
             if (indexOfElement != -1)
             {

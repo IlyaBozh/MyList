@@ -126,14 +126,14 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<IndexOutOfRangeException>(() => list.DeleteElementsByIndex(index, countElement));
         }
-        /*
-        [TestCaseSource(typeof(FindFirstElementByValueTestSource))]
+        
+        [TestCaseSource(typeof(FindIndexFirstElementByValueTestSource))]
         public void FindFirstElementByValueTest(int value, MyLinkedList list, int expectedIndex)
         {
-            int actualIndex = list.FindFirstElementByValue(value);
+            int actualIndex = list.FindIndexFirstElementByValue(value);
             Assert.AreEqual(expectedIndex, actualIndex);
         }
-
+        
         [TestCaseSource(typeof(ReverseTestSource))]
         public void ReverseTest(MyLinkedList list, MyLinkedList expectedList)
         {
@@ -141,7 +141,7 @@ namespace MyLinkedList.Tests
             MyLinkedList actualList = list;
             Assert.AreEqual(expectedList, actualList);
         }
-
+        
         [TestCaseSource(typeof(FindMaxTestSource))]
         public void FindMaxTest(MyLinkedList list, int expectedMaxElement)
         {
@@ -154,7 +154,7 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<Exception>(() => list.FindMax());
         }
-
+        
         [TestCaseSource(typeof(FindMinTestSource))]
         public void FindMinTest(MyLinkedList list, int expectedMinElement)
         {
@@ -167,7 +167,7 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<Exception>(() => list.FindMin());
         }
-
+        
         [TestCaseSource(typeof(FindIndexOfMaxElementTestSource))]
         public void FindIndexOfMaxElementTest(MyLinkedList list, int expectedIndexOfMaxElement)
         {
@@ -180,7 +180,7 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<Exception>(() => list.FindIndexOfMaxElement());
         }
-
+        
         [TestCaseSource(typeof(FindIndexOfMinElementTestSource))]
         public void FindIndexOfMinElementTest(MyLinkedList list, int expectedIndexOfMinElement)
         {
@@ -193,7 +193,7 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<Exception>(() => list.FindIndexOfMinElement());
         }
-
+        /*
         [TestCaseSource(typeof(SortAscendingTestSource))]
         public void SortAscendingTest(MyLinkedList list, MyLinkedList expectedList)
         {
@@ -209,7 +209,7 @@ namespace MyLinkedList.Tests
             MyLinkedList actualList = list;
             Assert.AreEqual(expectedList, actualList);
         }
-
+        */
         [TestCaseSource(typeof(DeleteFirstElementByValueTestSource))]
         public void DeleteFirstElementByValueTest(int value, MyLinkedList list, int expectedIndexOfElement, MyLinkedList expectedList)
         {
@@ -218,7 +218,7 @@ namespace MyLinkedList.Tests
             Assert.AreEqual(expectedIndexOfElement, actualIndexOfElement);
             Assert.AreEqual(expectedList, actualList);
         }
-
+        
         [TestCaseSource(typeof(DeleteAllElementByValueTestSource))]
         public void DeleteAllElementByValueTest(int value, MyLinkedList list, int expectedCountOfElements, MyLinkedList expectedList)
         {
@@ -228,6 +228,12 @@ namespace MyLinkedList.Tests
             Assert.AreEqual(expectedList, actualList);
         }
 
+        [TestCaseSource(typeof(DeleteAllElementByValueTest_WhenEmpyList_ShouldReturnExeptionSource))]
+        public void DeleteAllElementByValueTest_WhenEmpyList_ShouldReturnExeption(int value, MyLinkedList list)
+        {
+            Assert.Throws<Exception>(() => list.DeleteAllElementByValue(value));
+        }
+        
         [TestCaseSource(typeof(AddListToEndTestSource))]
         public void AddListToEndTest(MyLinkedList list, MyLinkedList originalList, MyLinkedList expectedList)
         {
@@ -236,24 +242,12 @@ namespace MyLinkedList.Tests
             Assert.AreEqual(expectedList, actualList);
         }
 
-        [TestCaseSource(typeof(AddListToEndTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource))]
-        public void AddListToEndTest_WhenListIsNull_ShouldReturnArgumentNullException(MyLinkedList list, MyLinkedList originalList)
-        {
-            Assert.Throws<ArgumentNullException>(() => originalList.AddListToEnd(list));
-        }
-
         [TestCaseSource(typeof(AddListToBeginTestSource))]
         public void AddListToBeginTest(MyLinkedList list, MyLinkedList originalList, MyLinkedList expectedList)
         {
             originalList.AddListToBegin(list);
             MyLinkedList actualList = originalList;
             Assert.AreEqual(expectedList, actualList);
-        }
-
-        [TestCaseSource(typeof(AddListToBeginTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource))]
-        public void AddListToBeginTest_WhenListIsNull_ShouldReturnArgumentNullException(MyLinkedList list, MyLinkedList originalList)
-        {
-            Assert.Throws<ArgumentNullException>(() => originalList.AddListToBegin(list));
         }
 
         [TestCaseSource(typeof(AddListByIndexTestSource))]
@@ -269,15 +263,7 @@ namespace MyLinkedList.Tests
             MyLinkedList list, int index, MyLinkedList originalList
             )
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => originalList.AddListByIndex(list, index));
+            Assert.Throws<IndexOutOfRangeException>(() => originalList.AddListByIndex(list, index));
         }
-
-        [TestCaseSource(typeof(AddListByIndexTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource))]
-        public void AddListByIndexTest_WhenListIsNull_ShouldReturnArgumentNullException(
-            MyLinkedList list, int index, MyLinkedList originalList
-            )
-        {
-            Assert.Throws<ArgumentNullException>(() => originalList.AddListByIndex(list, index));
-        }*/
     }
 }
