@@ -193,7 +193,7 @@ namespace MyLinkedList.Tests
         {
             Assert.Throws<Exception>(() => list.FindIndexOfMinElement());
         }
-        /*
+        
         [TestCaseSource(typeof(SortAscendingTestSource))]
         public void SortAscendingTest(MyLinkedList list, MyLinkedList expectedList)
         {
@@ -201,7 +201,7 @@ namespace MyLinkedList.Tests
             MyLinkedList actualList = list;
             Assert.AreEqual(expectedList, actualList);
         }
-
+        
         [TestCaseSource(typeof(SortDescendingTestSource))]
         public void SortDescendingTest(MyLinkedList list, MyLinkedList expectedList)
         {
@@ -209,7 +209,7 @@ namespace MyLinkedList.Tests
             MyLinkedList actualList = list;
             Assert.AreEqual(expectedList, actualList);
         }
-        */
+        
         [TestCaseSource(typeof(DeleteFirstElementByValueTestSource))]
         public void DeleteFirstElementByValueTest(int value, MyLinkedList list, int expectedIndexOfElement, MyLinkedList expectedList)
         {

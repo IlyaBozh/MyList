@@ -414,24 +414,49 @@ namespace MyLinkedList
             return indexOfMinElement;
         }
 
-        /*public void SortAscending()
+        public void SortAscending()
         {
-            int[] array = new int[Length];
-            Node crnt = _head;
+            int l = Length;
+            Node crnt;
+            Node prev;
 
-            for (int i = 0; i < Length; i++)
+            for (int i = l - 2; i >= 0; i--)
             {
-                array[i] = crnt.Value;
-                crnt = crnt.Next;
+                if (i == 0)
+                {
+                    crnt = _head;
+                    if (crnt.Next != null && crnt.Value > crnt.Next.Value)
+                    {
+                        _head = crnt.Next;
+                        crnt.Next = _head.Next;
+                        _head.Next = crnt;
+                    }
+                    prev = _head;
+                }
+                else
+                {
+                    prev = GetNode(i - 1);
+                    crnt = prev.Next;
+                }
+
+                while (crnt.Next != null && crnt.Value > crnt.Next.Value)
+                {
+                    prev.Next = crnt.Next;
+                    crnt.Next = prev.Next.Next;
+                    prev.Next.Next = crnt;
+
+                    prev = prev.Next;
+                }
             }
 
+            _tail = GetTail();
+        }
 
-        }*/
-
-        /*public void SortDescending()
+        public void SortDescending()
         {
-
-        }*/
+            SortAscending();
+            Reverse();
+        }
 
         public int DeleteFirstElementByValue(int value)
         {
@@ -608,20 +633,5 @@ namespace MyLinkedList
 
             return crnt;
         }
-
-      /*  private void MergeSort (int[] array, int left, int rigth)
-        {
-            if (left == rigth)
-            {
-                return;
-            }
-
-            int midell = array.Length / 2;
-
-            MergeSort(array, left, midell);
-            MergeSort(array, midell + 1, rigth);
-
-            
-        }*/
     }
 }

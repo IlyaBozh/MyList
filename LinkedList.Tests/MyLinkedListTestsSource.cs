@@ -170,7 +170,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(new int[] { 5, 5, 5, 2, 3, 6, 6, 2 }), 3 };
         }
     }
-    /*
+    
     public class SortAscendingTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -181,7 +181,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(), new MyLinkedList() };
         }
     }
-
+    
     public class SortDescendingTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
@@ -192,7 +192,7 @@ namespace MyLinkedList.Tests
             yield return new object[] { new MyLinkedList(), new MyLinkedList() };
         }
     }
-    */
+    
     public class DeleteFirstElementByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
