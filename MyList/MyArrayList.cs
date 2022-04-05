@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MyArrayList
+﻿namespace MyArrayList
 {
-    public class MyArrayList
+    public class MyArrayList : ICollection
     {
         public int Length { get; private set; }
         public int this[int index]
@@ -62,7 +56,7 @@ namespace MyArrayList
             }
         }
 
-        public void AddLast(int value)
+        public void Add(int value)
         {
             if (Length >= _array.Length)
             {
@@ -223,7 +217,7 @@ namespace MyArrayList
             }
         }
 
-        public int FindIndexFirstElementByValue (int value)
+        public int FindIndexByValue (int value)
         {
             int index = -1;
             for (int i = 0; i < Length; i++)
@@ -290,7 +284,7 @@ namespace MyArrayList
             return minElement;
         }
 
-        public int FindIndexOfMaxElement()
+        public int FindIndexOfMax()
         {
             if (Length == 0)
             {
@@ -310,7 +304,7 @@ namespace MyArrayList
             return indexOfMaxElement;
         }
 
-        public int FindIndexOfMinElement()
+        public int FindIndexOfMin()
         {
             if (Length == 0)
             {
@@ -375,9 +369,9 @@ namespace MyArrayList
             }
         }
 
-        public int DeleteFirstElementByValue(int value)
+        public int DeleteFirstByValue(int value)
         {
-            int indexOfElement = FindIndexFirstElementByValue(value);
+            int indexOfElement = FindIndexByValue(value);
 
             if (indexOfElement != -1)
             {
@@ -388,7 +382,7 @@ namespace MyArrayList
             return indexOfElement;
         }
 
-        public int DeleteAllElementByValue(int value)
+        public int DeleteAllByValue(int value)
         {
             int countOfElements = 0;
 
@@ -408,36 +402,40 @@ namespace MyArrayList
             return countOfElements;
         }
 
-        public void AddListToEnd(MyArrayList list)
+        public void AddList(ICollection list)
         {
-            if (list == null)
+            if (list == null || list is not MyArrayList)
             {
                 throw new ArgumentNullException();
             }
 
-            for (int i = 0; i < list.Length; i++)
+            MyArrayList arrayList = (MyArrayList) list;
+
+            for (int i = 0; i < arrayList.Length; i++)
             {
-                AddLast(list[i]);
+                Add(arrayList[i]);
             }
         }
 
-        public void AddListToBegin(MyArrayList list)
+        public void AddListToBegin(ICollection list)
         {
-            if (list == null)
+            if (list == null || list is not MyArrayList)
             {
                 throw new ArgumentNullException();
             }
 
-            int[] newArray = new int[this.Length + list.Length];
+            MyArrayList arrayList = (MyArrayList)list;
 
-            for (int i = 0; i < list.Length; i++)
+            int[] newArray = new int[this.Length + arrayList.Length];
+
+            for (int i = 0; i < arrayList.Length; i++)
             {
-                newArray[i] = list[i];
+                newArray[i] = arrayList[i];
             }
 
-            for (int i = list.Length; i < newArray.Length; i++)
+            for (int i = arrayList.Length; i < newArray.Length; i++)
             {
-                newArray[i] = _array[i - list.Length];
+                newArray[i] = _array[i - arrayList.Length];
             }
 
             Length = newArray.Length;
@@ -445,18 +443,19 @@ namespace MyArrayList
             UpSize();
         }
 
-        public void AddListByIndex(MyArrayList list, int index)
+        public void AddListByIndex(ICollection list, int index)
         {
-            if (list == null)
+            if (list == null || list is not MyArrayList)
             {
                 throw new ArgumentNullException();
             }
+            MyArrayList arrayList = (MyArrayList)list;
 
-            int newLegth = this.Length + list.Length;
+            int newLegth = this.Length + arrayList.Length;
 
             if (index < 0 || index >= newLegth)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new IndexOutOfRangeException();
             }
 
             int[] newArray = new int[newLegth];
@@ -466,14 +465,14 @@ namespace MyArrayList
                 newArray[i] = _array[i];
             }
 
-            for (int i = index; i < index + list.Length; i++)
+            for (int i = index; i < index + arrayList.Length; i++)
             {
-                newArray[i] = list[i - index];
+                newArray[i] = arrayList[i - index];
             }
 
-            for (int i = index + list.Length; i < newArray.Length; i++)
+            for (int i = index + arrayList.Length; i < newArray.Length; i++)
             {
-                newArray[i] = _array[i - list.Length];
+                newArray[i] = _array[i - arrayList.Length];
             }
 
             Length = newArray.Length;

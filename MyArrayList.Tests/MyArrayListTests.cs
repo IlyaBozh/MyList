@@ -1,5 +1,5 @@
+
 using NUnit.Framework;
-using System.Collections;
 using System;
 
 namespace MyArrayList.Tests
@@ -228,7 +228,7 @@ namespace MyArrayList.Tests
         }
 
         [TestCaseSource(typeof(DeleteAllByValueTest_WhenEmpyList_ShouldReturnExeptionSource))]
-        public void DeleteAllByValueTest_WhenEmpyList_ShouldReturnExeption(int value, MyLinkedList list)
+        public void DeleteAllByValueTest_WhenEmpyList_ShouldReturnExeption(int value, ICollection list)
         {
             Assert.Throws<Exception>(() => list.DeleteAllByValue(value));
         }
@@ -274,7 +274,7 @@ namespace MyArrayList.Tests
             ICollection list, int index, ICollection originalList
             )
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => originalList.AddListByIndex(list, index));
+            Assert.Throws<IndexOutOfRangeException>(() => originalList.AddListByIndex(list, index));
         }
 
         [TestCaseSource(typeof(AddListByIndexTest_WhenListIsNull_ShouldReturnArgumentNullExceptionSource))]

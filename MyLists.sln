@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArrayList", "MyList\MyArrayList.csproj", "{747F407A-02DD-415F-BD73-DDFF241234A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyLists", "MyList\MyLists.csproj", "{747F407A-02DD-415F-BD73-DDFF241234A5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyArrayList.Tests", "MyArrayList.Tests\MyArrayList.Tests.csproj", "{937DAF86-1B4D-4F14-954B-5E3A0807BB06}"
 EndProject
