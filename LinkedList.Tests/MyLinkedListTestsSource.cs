@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLinkedList.Tests
 {
-    public class AddLastTestSource : IEnumerable
+    public class AddTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -104,7 +104,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class FindIndexFirstElementByValueTestSource : IEnumerable
+    public class FindIndexByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -149,7 +149,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class FindIndexOfMaxElementTestSource : IEnumerable
+    public class FindIndexOfMaxTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -160,7 +160,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class FindIndexOfMinElementTestSource : IEnumerable
+    public class FindIndexOfMinTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -193,7 +193,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class DeleteFirstElementByValueTestSource : IEnumerable
+    public class DeleteFirstByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -205,7 +205,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class DeleteAllElementByValueTestSource : IEnumerable
+    public class DeleteAllByValueTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -216,7 +216,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class AddListToEndTestSource : IEnumerable
+    public class AddListTestSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

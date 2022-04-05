@@ -98,7 +98,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class FindIndexOfMaxElementTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
+    public class FindIndexOfMaxTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -106,7 +106,7 @@ namespace MyLinkedList.Tests
         }
     }
     
-    public class FindIndexOfMinElementTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
+    public class FindIndexOfMinTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {
@@ -114,7 +114,7 @@ namespace MyLinkedList.Tests
         }
     }
 
-    public class DeleteAllElementByValueTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
+    public class DeleteAllByValueTest_WhenEmpyList_ShouldReturnExeptionSource : IEnumerable
     {
         public IEnumerator GetEnumerator()
         {

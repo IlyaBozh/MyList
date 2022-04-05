@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace MyLinkedList
+
+namespace MyArrayList
 {
-    public class MyLinkedList
+    public class MyLinkedList : ICollection
     {
         public int Length
         {
@@ -15,7 +12,7 @@ namespace MyLinkedList
                 int countElements = 0;
                 Node crnt = _head;
 
-                while(crnt != null)
+                while (crnt != null)
                 {
                     countElements++;
                     crnt = crnt.Next;
@@ -81,7 +78,7 @@ namespace MyLinkedList
             _tail = _head;
         }
 
-        public MyLinkedList (int[] array)
+        public MyLinkedList(int[] array)
         {
             if (array.Length == 0)
             {
@@ -102,7 +99,7 @@ namespace MyLinkedList
             }
         }
 
-        public void AddLast(int value)
+        public void Add(int value)
         {
             if (_head == null)
             {
@@ -228,7 +225,7 @@ namespace MyLinkedList
                 _tail = null;
             }
             else
-            { 
+            {
                 Node crnt = GetNode(Length - countElement - 1);
                 crnt.Next = null;
                 _tail = crnt;
@@ -285,7 +282,7 @@ namespace MyLinkedList
             _tail = GetTail();
         }
 
-        public int FindIndexFirstElementByValue(int value)
+        public int FindIndexByValue(int value)
         {
             Node crnt = _head;
             int index = -1;
@@ -311,7 +308,7 @@ namespace MyLinkedList
             Node next;
             Node prev = null;
 
-            while(crnt != null)
+            while (crnt != null)
             {
                 next = crnt.Next;
                 crnt.Next = prev;
@@ -366,7 +363,7 @@ namespace MyLinkedList
             return minElement;
         }
 
-        public int FindIndexOfMaxElement()
+        public int FindIndexOfMax()
         {
             if (Length == 0)
             {
@@ -390,7 +387,7 @@ namespace MyLinkedList
             return indexOfMaxElement;
         }
 
-        public int FindIndexOfMinElement()
+        public int FindIndexOfMin()
         {
             if (Length == 0)
             {
@@ -449,7 +446,7 @@ namespace MyLinkedList
                 }
             }
 
-            _tail = GetTail(); 
+            _tail = GetTail();
         }
 
         public void SortDescending()
@@ -458,9 +455,9 @@ namespace MyLinkedList
             Reverse();
         }
 
-        public int DeleteFirstElementByValue(int value)
+        public int DeleteFirstByValue(int value)
         {
-            int indexOfElement = FindIndexFirstElementByValue(value);
+            int indexOfElement = FindIndexByValue(value);
 
             if (indexOfElement != -1)
             {
@@ -470,7 +467,7 @@ namespace MyLinkedList
             return indexOfElement;
         }
 
-        public int DeleteAllElementByValue(int value)
+        public int DeleteAllByValue(int value)
         {
             if (Length == 0)
             {
@@ -508,36 +505,59 @@ namespace MyLinkedList
             return countOfElements;
         }
 
-        public void AddListToEnd(MyLinkedList list)
+        public void AddList(ICollection list)
         {
+            if (list is not MyLinkedList)
+            {
+                throw new ArgumentException();
+            }
+
+            MyLinkedList linkedList = (MyLinkedList) list;
+
             if (_head == null)
             {
-                this._head = list._head;
+                this._head = linkedList._head;
             }
             else
             {
-                this._tail.Next = list._head;
+                this._tail = GetTail();
+                this._tail.Next = linkedList._head;
                 this._tail = GetTail();
             }
         }
 
-        public void AddListToBegin(MyLinkedList list)
+        public void AddListToBegin(ICollection list)
         {
-            if (list._head != null)
+            if (list is not MyLinkedList)
             {
-                list._tail.Next = this._head;
-                this._head = list._head;
+                throw new ArgumentException();
+            }
+
+            MyLinkedList linkedList = (MyLinkedList)list;
+
+            if (linkedList._head != null)
+            {
+                Node crnt = this._head;
+                linkedList._tail.Next = crnt;
+                this._head = linkedList._head;
             }
         }
 
-        public void AddListByIndex(MyLinkedList list, int index)
+        public void AddListByIndex(ICollection list, int index)
         {
             if (index < 0 || index > Length)
             {
                 throw new IndexOutOfRangeException();
             }
 
-            if (list._head != null)
+            if (list is not MyLinkedList)
+            {
+                throw new ArgumentException();
+            }
+
+            MyLinkedList linkedList = (MyLinkedList)list;
+
+            if (linkedList._head != null)
             {
                 if (index == 0)
                 {
@@ -545,15 +565,13 @@ namespace MyLinkedList
                 }
                 else
                 {
-                    Node crnt = _head;
+                    Node leftBorder = GetNode(index - 1);
+                    Node rigthBorder = GetNode(index);
 
-                    for (int i = 1; i < index; i++)
-                    {
-                        crnt = crnt.Next;
-                    }
-
-                    list._tail.Next = crnt.Next;
-                    crnt.Next = list._head;
+                    leftBorder.Next = linkedList._head;
+                    linkedList._tail = linkedList.GetTail();
+                    linkedList._tail.Next = rigthBorder;
+                    
                     _tail = GetTail();
                 }
             }
@@ -614,7 +632,7 @@ namespace MyLinkedList
         {
             Node crnt = _head;
 
-            for(int i = 1; i < Length; i++)
+            for (int i = 1; i < Length; i++)
             {
                 crnt = crnt.Next;
             }
@@ -626,7 +644,7 @@ namespace MyLinkedList
         {
             Node crnt = _head;
 
-            for(int i = 1; i <= index; i++)
+            for (int i = 1; i <= index; i++)
             {
                 crnt = crnt.Next;
             }
