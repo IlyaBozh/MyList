@@ -4,7 +4,7 @@ using System;
 
 namespace MyArrayList.Tests
 {
-    public class MyArrayListTests
+    public class CollectionTests
     {
         [TestCaseSource(typeof(AddTestSource))]
         public void AddTest(int element, ICollection list, ICollection expectedList)
