@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyList\MyLists.csproj" />
+    <ProjectReference Include="..\MyLists\MyLists.csproj" />
   </ItemGroup>
 
 </Project>

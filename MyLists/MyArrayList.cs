@@ -104,7 +104,7 @@
                 throw new Exception("Empty list");
             }
 
-            if(Length <= _array.Length / 2)
+            if (Length <= _array.Length / 2)
             {
                 DownSize();
             }
@@ -217,14 +217,14 @@
             }
         }
 
-        public int FindIndexByValue (int value)
+        public int FindIndexByValue(int value)
         {
             int index = -1;
             for (int i = 0; i < Length; i++)
             {
                 if (value == _array[i])
                 {
-                   index = i;
+                    index = i;
                     break;
                 }
             }
@@ -236,7 +236,7 @@
         {
             int tmp;
 
-            for (int i = 0; i < Length / 2; i ++)
+            for (int i = 0; i < Length / 2; i++)
             {
                 tmp = _array[i];
                 _array[i] = _array[Length - i - 1];
@@ -409,7 +409,7 @@
                 throw new ArgumentNullException();
             }
 
-            MyArrayList arrayList = (MyArrayList) list;
+            MyArrayList arrayList = (MyArrayList)list;
 
             for (int i = 0; i < arrayList.Length; i++)
             {
@@ -459,7 +459,7 @@
             }
 
             int[] newArray = new int[newLegth];
-            
+
             for (int i = 0; i < index; i++)
             {
                 newArray[i] = _array[i];

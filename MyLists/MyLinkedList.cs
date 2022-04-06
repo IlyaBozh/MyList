@@ -512,7 +512,7 @@ namespace MyArrayList
                 throw new ArgumentException();
             }
 
-            MyLinkedList linkedList = (MyLinkedList) list;
+            MyLinkedList linkedList = (MyLinkedList)list;
 
             if (_head == null)
             {
@@ -571,7 +571,7 @@ namespace MyArrayList
                     leftBorder.Next = linkedList._head;
                     linkedList._tail = linkedList.GetTail();
                     linkedList._tail.Next = rigthBorder;
-                    
+
                     _tail = GetTail();
                 }
             }

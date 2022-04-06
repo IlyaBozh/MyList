@@ -1,4 +1,4 @@
-
+﻿
 using NUnit.Framework;
 using System;
 
@@ -63,7 +63,7 @@ namespace MyArrayList.Tests
         {
             Assert.Throws<Exception>(() => list.DeleteLast());
         }
-        
+
         [TestCaseSource(typeof(DeleteByIndexTestSource))]
         public void DeleteByIndexTest(int index, ICollection list, ICollection expectedList)
         {
